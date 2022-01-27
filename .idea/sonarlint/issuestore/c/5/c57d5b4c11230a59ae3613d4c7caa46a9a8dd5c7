@@ -1,0 +1,23 @@
+
+U
+java:S1118":Add a private constructor to hide the implicit public one.(©•êªùÿÿÿÿ
+H
+java:S4925"-Remove this "Class.forName()", it is useless.(õ†¨Äùÿÿÿÿ
+F
+java:S1481C"1Remove this unused "medicationId" local variable.(‹ÙA
+‹
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(æ¾­šúÿÿÿÿ
+l
+java:S1104"VMake connection a static final constant or non-public and provide accessors if needed.(ıØÕá
+F
+java:S1444"0Make this "public static connection" field final(ıØÕá
+j
+java:S2095y"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(«†å’ÿÿÿÿÿ
+d
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¢§Ü
+j
+java:S20951"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(–’±¾ÿÿÿÿÿ
+e
+java:S2095a"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(··ƒÉ
+j
+java:S2095G"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ØÅğÏşÿÿÿÿ
