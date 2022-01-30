@@ -2,7 +2,9 @@ package com.aigulsharip.java_ee.lecture5.servlets;
 
 
 import com.aigulsharip.java_ee.lecture5.db.DBManagerMed;
+import com.aigulsharip.java_ee.lecture5.db.DBManagerMedForm;
 import com.aigulsharip.java_ee.lecture5.db.Medication;
+import com.aigulsharip.java_ee.lecture5.db.MedicationForm;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,11 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 @WebServlet(value = "/addMedication")
 public class AddMedicationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        ArrayList<MedicationForm> medicationForms = DBManagerMedForm.getAllMedForms();
+        request.setAttribute("medicationForms", medicationForms);
+
         request.getRequestDispatcher("addMedication.jsp").forward(request,response);
     }
 
@@ -25,26 +31,26 @@ public class AddMedicationServlet extends HttpServlet {
 
         String name = request.getParameter("name");
         String dosage = request.getParameter("dosage");
-        String form = request.getParameter("form");
+        Long form_id = Long.valueOf(request.getParameter("form"));
         Integer price = Integer.parseInt(request.getParameter("price"));
         Integer quantity = Integer.parseInt(request.getParameter("quantity"));
 
+        MedicationForm medicationForm = DBManagerMedForm.getMedicationForm(form_id);
+        if (medicationForm != null) {
+            Medication medication = new Medication();
+            medication.setName(name);
+            medication.setDosage(dosage);
+            medication.setMedicationForm(medicationForm);
+            medication.setPrice(price);
+            medication.setQuantity(quantity);
+            try {
+                DBManagerMed.addMedication(medication);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-        Medication medication = new Medication();
-        medication.setName(name);
-        medication.setDosage(dosage);
-        medication.setForm(form);
-        medication.setPrice(price);
-        medication.setQuantity(quantity);
-
-        try {
-            DBManagerMed.addMedication(medication);
-        } catch (SQLException e) {
-            e.printStackTrace();
+            response.sendRedirect("/medications");
         }
-
-        response.sendRedirect("/medications");
-
 
     }
 

@@ -51,7 +51,7 @@
                         <td><%=med.getId()%></td>
                         <td><%=med.getName()%></td>
                         <td><%=med.getDosage()%></td>
-                        <td><%=med.getForm()%></td>
+                        <td><%=med.getMedicationForm().getFormName()%></td>
                         <td><%=med.getPrice()%></td>
                         <td><%=med.getQuantity()%></td>
                         <td><a href="/readMedication?id=<%=med.getId()%>" class="btn btn-primary btn-sm">DETAILS</a></td>

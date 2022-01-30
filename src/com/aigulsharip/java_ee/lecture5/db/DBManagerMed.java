@@ -22,21 +22,28 @@ public class DBManagerMed {
         ArrayList<Medication> meds = new ArrayList<>();
 
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM medications");
+            PreparedStatement statement = connection.prepareStatement("SELECT id, name, dosage, mf.form_id, mf.form_name, price, quantity " +
+                    "FROM medications " +
+                    "INNER JOIN medication_form as mf on mf.form_id = medications.form_id");
 
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
                 Medication med = new Medication();
+
                 med.setId(resultSet.getLong("id"));
                 med.setName(resultSet.getString("name"));
                 med.setDosage(resultSet.getString("dosage"));
-                med.setForm(resultSet.getString("form"));
+                med.setMedicationForm(
+                        new MedicationForm(resultSet.getLong("form_id"),
+                                           resultSet.getString ("form_name")));
                 med.setPrice(resultSet.getInt("price"));
                 med.setQuantity(resultSet.getInt("quantity"));
                 meds.add(med);
             }
             statement.close();
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -51,7 +58,7 @@ public class DBManagerMed {
 
         statement.setString(1, medication.getName());
         statement.setString(2, medication.getDosage());
-        statement.setString(3, medication.getForm());
+        statement.setLong(3, medication.getMedicationForm().getId());
         statement.setInt(4, medication.getPrice());
         statement.setInt(5, medication.getQuantity());
 
@@ -68,17 +75,24 @@ public class DBManagerMed {
 
         PreparedStatement statement = null;
         try {
-            statement = connection.prepareStatement("SELECT * FROM medications WHERE id = ?");
+            statement = connection.prepareStatement("SELECT med.id, med.name, med.dosage, mf.form_id, mf.form_name, med.price, med.quantity" +
+                    "FROM medications as med" +
+                    "INNER JOIN medication_form as mf on mf.form_id = med.form_id" +
+                    "WHERE med.id = ?");
             statement.setLong(1,id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
 
-                medication = new Medication(resultSet.getLong("id"),
-                        resultSet.getString("name"),
-                        resultSet.getString("dosage"),
-                        resultSet.getString("form"),
-                        resultSet.getInt("price"),
-                        resultSet.getInt("quantity"));
+                medication = new Medication();
+                medication.setId(resultSet.getLong("id"));
+                medication.setName(resultSet.getString("name"));
+                medication.setDosage( resultSet.getString("dosage"));
+                medication.setMedicationForm(
+                        new MedicationForm(resultSet.getLong("form_id"), resultSet.getString ("form_name")));
+                medication.setPrice(resultSet.getInt("price"));
+                medication.setQuantity(resultSet.getInt("quantity"));
+
+
             }
             statement.close();
 
@@ -94,10 +108,10 @@ public class DBManagerMed {
         int result = 0;
 
         try {
-            PreparedStatement statement = connection.prepareStatement("UPDATE medications SET name =?, dosage = ?,form = ?, price = ?, quantity = ? WHERE id = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE medications SET name =?, dosage = ?,form_id = ?, price = ?, quantity = ? WHERE id = ?");
             statement.setString(1, medication.getName());
             statement.setString(2, medication.getDosage());
-            statement.setString(3, medication.getForm());
+            statement.setLong(3, medication.getMedicationForm().getId());
             statement.setInt(4, medication.getPrice());
             statement.setInt(5, medication.getQuantity());
 

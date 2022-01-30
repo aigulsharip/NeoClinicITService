@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.aigulsharip.java_ee.lecture5.db.MedicationForm" %><%--
   Created by IntelliJ IDEA.
   User: Aigul
   Date: 18.01.2022
@@ -53,10 +54,24 @@
                 <div class="row mt-2">
                     <div class="col-12">
                         <select class="form-select" name="form">
-                            <option>bottle</option>
-                            <option>ampoules</option>
-                            <option>tablets</option>
-                            <option>candles</option>
+
+                            <%
+                                ArrayList<MedicationForm> medicationForms = (ArrayList<MedicationForm>) request.getAttribute("medicationForms");
+                                if (medicationForms != null) {
+                                    for (MedicationForm med : medicationForms ) {
+
+                            %>
+                                    <option value = "<%=med.getId()%>">
+                                        <%=med.getFormName()%>
+                                    </option>
+
+
+                            <%
+                                }
+                            }
+
+                            %>
+
 
                         </select>
 

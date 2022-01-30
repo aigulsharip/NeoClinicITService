@@ -4,17 +4,17 @@ public class Medication {
     private Long id;
     private String name;
     private String dosage;
-    private String form;
+    private MedicationForm medicationForm;
     private int price;
     private int quantity;
 
     public Medication () {}
 
-    public Medication(Long id, String name, String dosage, String form, int price, int quantity) {
+    public Medication(Long id, String name, String dosage, MedicationForm medicationForm, int price, int quantity) {
         this.id = id;
         this.name = name;
         this.dosage = dosage;
-        this.form = form;
+        this.medicationForm = medicationForm;
         this.price = price;
         this.quantity = quantity;
     }
@@ -43,12 +43,12 @@ public class Medication {
         this.dosage = dosage;
     }
 
-    public String getForm() {
-        return form;
+    public MedicationForm getMedicationForm() {
+        return medicationForm;
     }
 
-    public void setForm(String form) {
-        this.form = form;
+    public void setMedicationForm(MedicationForm medicationForm) {
+        this.medicationForm = medicationForm;
     }
 
     public int getPrice() {
