@@ -12,6 +12,8 @@ public class DBManagerMed {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/neoclinic", "postgres", "postgres");
+
+
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -22,9 +24,9 @@ public class DBManagerMed {
         ArrayList<Medication> meds = new ArrayList<>();
 
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT id, name, dosage, mf.form_id, mf.form_name, price, quantity " +
-                    "FROM medications " +
-                    "INNER JOIN medication_form as mf on mf.form_id = medications.form_id");
+            PreparedStatement statement = connection.prepareStatement("SELECT med.id, med.name, med.dosage, mf.form_id, mf.form_name, med.price, med.quantity " +
+                    "FROM medications as med " +
+                    "INNER JOIN medication_form as mf on mf.form_id = med.form_id");
 
             ResultSet resultSet = statement.executeQuery();
 
@@ -53,7 +55,7 @@ public class DBManagerMed {
 
     public static void addMedication(Medication medication) throws SQLException {
 
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO medications (name, dosage, form, price, quantity) VALUES (?, ?, ?, ?, ?)");
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO medications (name, dosage, form_id, price, quantity) VALUES (?, ?, ?, ?, ?)");
 
 
         statement.setString(1, medication.getName());
@@ -75,9 +77,9 @@ public class DBManagerMed {
 
         PreparedStatement statement = null;
         try {
-            statement = connection.prepareStatement("SELECT med.id, med.name, med.dosage, mf.form_id, mf.form_name, med.price, med.quantity" +
-                    "FROM medications as med" +
-                    "INNER JOIN medication_form as mf on mf.form_id = med.form_id" +
+            statement = connection.prepareStatement("SELECT med.id, med.name, med.dosage, mf.form_id, mf.form_name, med.price, med.quantity " +
+                    "FROM medications as med " +
+                    "INNER JOIN medication_form as mf on mf.form_id = med.form_id " +
                     "WHERE med.id = ?");
             statement.setLong(1,id);
             ResultSet resultSet = statement.executeQuery();

@@ -1,13 +1,13 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="JavaEELecture5PracticeTask3:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/JavaEELecture5PracticeTask3_war_exploded</output-path>
+  <artifact type="exploded-war" name="NeoClinicITService:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/NeoClinicITService_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="NeoClinicITService" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="JavaEELecture5PracticeTask3/web/Web" />
+      <element id="javaee-facet-resources" facet="NeoClinicITService/web/Web" />
     </root>
   </artifact>
 </component>
