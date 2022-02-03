@@ -34,7 +34,13 @@
                         <td>FORM</td>
                         <td>PRICE</td>
                         <td >QUANTITY</td>
+                        <%
+                            if (currentUser != null){
+                        %>
                         <td width="5%">DETAILS</td>
+                        <%
+                            }
+                        %>
 
 
                     </tr>
@@ -54,8 +60,13 @@
                         <td><%=med.getMedicationForm().getFormName()%></td>
                         <td><%=med.getPrice()%></td>
                         <td><%=med.getQuantity()%></td>
+                        <%
+                            if (currentUser != null){
+                        %>
                         <td><a href="/readMedication?id=<%=med.getId()%>" class="btn btn-primary btn-sm">DETAILS</a></td>
-
+                        <%
+                            }
+                        %>
                     </tr>
                     <%
                             }

@@ -1,27 +1,0 @@
-
-P
-java:S1118":Add a private constructor to hide the implicit public one.(¶Ê´
-H
-java:S4925"-Remove this "Class.forName()", it is useless.(õ†¨Äùÿÿÿÿ
-F
-java:S1481"+Remove this unused "result" local variable.(Ó°¬Ñøÿÿÿÿ
-?
-java:S1481")Remove this unused "user" local variable.(Ü¥½¬
-F
-java:S1481"1Remove this unused "medicationId" local variable.(‹ÙA
-Q	java:S125!"<This block of commented-out lines of code should be removed.(–¬İ
-N	java:S106'"9Replace this use of System.out or System.err by a logger.(º¬•É
-N	java:S106("9Replace this use of System.out or System.err by a logger.(±óÚß
-N	java:S106)"9Replace this use of System.out or System.err by a logger.(‹£¸’
-S	java:S106,"9Replace this use of System.out or System.err by a logger.(Ç¼ãáùÿÿÿÿ
-N	java:S106-"9Replace this use of System.out or System.err by a logger.(±óÚß
-N	java:S106."9Replace this use of System.out or System.err by a logger.(‹£¸’
-Q	java:S1251"<This block of commented-out lines of code should be removed.(Œ‡Ü‘
-Q	java:S125A"<This block of commented-out lines of code should be removed.(–¬İ
-V	java:S125I"<This block of commented-out lines of code should be removed.(’•îæıÿÿÿÿ
-l
-java:S1104"VMake connection a static final constant or non-public and provide accessors if needed.(ıØÕá
-F
-java:S1444"0Make this "public static connection" field final(ıØÕá
-j
-java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ì«åáøÿÿÿÿ

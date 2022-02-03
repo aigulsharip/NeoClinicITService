@@ -1,5 +1,6 @@
-<%
+<%@ page import="com.aigulsharip.java_ee.lecture5.db.User" %><%
     String siteTitle = "NeoClinic Medications";
+    User currentUser = (User) session.getAttribute("current_user");
 %>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -10,8 +11,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <%
+                    if (currentUser != null) {
+                %>
+
                 <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="/">Home</a>
+                    <a class="nav-link " aria-current="page" href="/profile"><%=currentUser.getFullName()%></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="/medications">Medications</a>
@@ -22,8 +27,29 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="/loginPage">Login</a>
+                    <a class="nav-link " aria-current="page" href="/signout">Sign Out</a>
                 </li>
+
+                <%
+                } else {
+                %>
+
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="/medications">Medications</a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="/signin">Sign In</a>
+                </li>
+
+                <%
+                    }
+                %>
+
 
 
 
