@@ -21,7 +21,7 @@
     <div class = "container-fluid">
         <div class = "row">
             <div class = "col mx-auto">
-                <h1 class = "text-center"> 404 NOT FOUND </h1>
+                <h1 class = "text-center"> 403 Access Forbidden </h1>
             </div>
         </div>
     </div>
