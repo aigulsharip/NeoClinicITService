@@ -1,4 +1,4 @@
-package com.aigulsharip.java_ee.lecture5.servlets;
+package com.aigulsharip.java_ee.lecture5.servlets.MedicationServlets;
 
 
 import com.aigulsharip.java_ee.lecture5.db.DBManagerMed;

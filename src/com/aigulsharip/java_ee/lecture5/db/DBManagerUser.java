@@ -34,6 +34,7 @@ public class DBManagerUser {
                 user.setId(resultSet.getLong("id"));
                 user.setPassword(resultSet.getString("password"));
                 user.setFullName(resultSet.getString("full_name"));
+                user.setUserRole(UserRoles.valueOf(resultSet.getString("user_role")));
             }
             statement.close();
 

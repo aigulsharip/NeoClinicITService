@@ -1,4 +1,4 @@
-package com.aigulsharip.java_ee.lecture5.servlets;
+package com.aigulsharip.java_ee.lecture5.servlets.MedicationServlets;
 
 
 import com.aigulsharip.java_ee.lecture5.db.*;
@@ -53,8 +53,7 @@ public class ReadMedicationServlet extends HttpServlet {
 
         User currentUser = (User) request.getSession().getAttribute("current_user");
 
-        if (currentUser != null) {
-
+        if (currentUser != null && currentUser != null && currentUser.getUserRole() == UserRoles.ROLE_ADMIN)  {
             String redirect = "/";
             String id = request.getParameter("id");
             Long medicationId = null;
@@ -97,10 +96,6 @@ public class ReadMedicationServlet extends HttpServlet {
         } else {
             response.sendRedirect("/signin");
         }
-
-
-
-
 
     }
 

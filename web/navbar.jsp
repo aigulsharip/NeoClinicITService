@@ -1,4 +1,6 @@
-<%@ page import="com.aigulsharip.java_ee.lecture5.db.User" %><%
+<%@ page import="com.aigulsharip.java_ee.lecture5.db.User" %>
+<%@ page import="com.aigulsharip.java_ee.lecture5.db.UserRoles" %>
+<%
     String siteTitle = "NeoClinic Medications";
     User currentUser = (User) session.getAttribute("current_user");
 %>
@@ -18,20 +20,36 @@
                 <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="/profile"><%=currentUser.getFullName()%></a>
                 </li>
+
+                <%
+                    if (currentUser.getUserRole() == UserRoles.ROLE_ADMIN) {
+                %>
+
                 <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="/medications">Medications</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="/addMedication">Add Medications</a>
+                    <a class="nav-link " aria-current="page" href="/addMedication">Add Medication</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="/addNote">Add Note</a>
+                </li>
+
+
+                <%
+                    }
+                %>
 
                 <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="/signout">Sign Out</a>
                 </li>
 
+
                 <%
-                } else {
+
+                    } else {
                 %>
 
                 <li class="nav-item">
@@ -41,14 +59,23 @@
                     <a class="nav-link " aria-current="page" href="/medications">Medications</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="/notes">Notes</a>
+                </li>
+
+
 
                 <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="/signin">Sign In</a>
                 </li>
 
                 <%
+
                     }
                 %>
+
+
+
 
 
 

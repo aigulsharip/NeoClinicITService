@@ -30,6 +30,7 @@
             <%
                 Medication medication = (Medication) request.getAttribute("medication");
                 if (medication != null) {
+                    if (currentUser != null && currentUser.getUserRole() == UserRoles.ROLE_ADMIN ) {
 
 
             %>
@@ -117,38 +118,99 @@
                     <button type="submit" class="btn btn-primary">Update Medication</button>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteMedication">Delete Medication</button>
                 </div>
+                <!-- Modal -->
+                <div class="modal fade" id="deleteMedication" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="post" action="/deleteMedication">
+                                <input name="id" type="hidden" value="<%=medication.getId()%>">
+
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                    <button type="submit" class="btn btn-primary">Yes</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
 
             </form>
+            <%
+            }else {
+
+            %>
+            <div>
+
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <label>Name: </label>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <input type="text" class="form-control" readonly value="<%=medication.getName()%>">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <label>Dosage: </label>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <input type="text" class="form-control" readonly value="<%=medication.getDosage()%>">
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <label>Form: </label>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <input type="text" class="form-control"  readonly value="<%=medication.getMedicationForm().getFormName()%>">
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <label>Price: </label>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <input type="text" class="form-control" readonly value="<%=medication.getPrice()%>">
+                    </div>
+                </div>
 
 
-            <!-- Modal -->
-            <div class="modal fade" id="deleteMedication" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form method="post" action="/deleteMedication">
-                            <input name="id" type="hidden" value="<%=medication.getId()%>">
-
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Are you sure?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                                <button type="submit" class="btn btn-primary">Yes</button>
-                            </div>
-
-                        </form>
-
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <label>Quantity: </label>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <input type="text" class="form-control" readonly value="<%=medication.getQuantity()%>">
                     </div>
                 </div>
             </div>
 
-
             <%
                 }
+                    }
+
             %>
         </div>
     </div>
