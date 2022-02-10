@@ -13,6 +13,7 @@
 <head>
        <title>Note</title>
     <link rel = "stylesheet" type = "text/css" href = "bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
 </head>
 <body>
 <div class = "container-fluid">
@@ -38,6 +39,30 @@
 
                     <p>Posted by <strong><%=note.getDoctor().getFullName()%></strong> at <strong> <%=note.getVisitTime()%></strong></p>
                 </div>
+
+                <div class="mt-3 border-bottom">
+                    <p>
+                            <%=note.getLikes()%> likes
+                            <%
+                                if(currentUser!=null){
+                            %>
+                    <form action="/toLike" method="post">
+                        <input type="hidden" name="note_id" value="<%=note.getId()%>">
+                        <i class="fa-solid fa-heart">Like</i>
+                        <i class="fa-solid fa-thumbs-up"></i>
+
+                        <button class="btn btn-danger btn-sm">LIKE</button>
+
+                    </form>
+                    <%
+                        }
+                    %>
+                    </p>
+                </div>
+
+
+
+
                 <h3>Comments: </h3>
 
                 <div class="row mt-2">

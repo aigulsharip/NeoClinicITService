@@ -29,7 +29,8 @@
                     </a>
                     <p>Type of visit: <%=note.getNoteType()%></p>
                     <p><%=note.getContent()%></p>
-                    <p> Conducted by <strong><%=note.getDoctor().getFullName()%></strong> at <strong> <%=note.getVisitTime()%></strong></p>
+                    <p> Posted by <strong><%=note.getDoctor().getFullName()%></strong> at <strong> <%=note.getVisitTime()%></strong></p>
+                    <p><%=note.getLikes()%> likes </p>
                 </div>
                 <%
                         }

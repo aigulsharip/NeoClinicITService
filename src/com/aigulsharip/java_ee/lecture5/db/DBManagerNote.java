@@ -44,7 +44,7 @@ public class DBManagerNote {
 
         try {
 
-            PreparedStatement statement = connection.prepareStatement("SELECT n.id, users.id, n.note_type, n.doctor_id, users.full_name, n.patient_name, n.content, n.visit_time " +
+            PreparedStatement statement = connection.prepareStatement("SELECT n.id, users.id, n.note_type, n.doctor_id, users.full_name, n.patient_name, n.content, n.visit_time, n.likes " +
                     "FROM doctor_notes as n " +
                     "INNER JOIN users on users.id = n.doctor_id ");
 
@@ -58,7 +58,8 @@ public class DBManagerNote {
                         new User(resultSet.getLong("doctor_id"), null, null, resultSet.getString("full_name"), null),
                         resultSet.getString("patient_name"),
                         resultSet.getString("content"),
-                        resultSet.getTimestamp( "visit_time")
+                        resultSet.getTimestamp( "visit_time"),
+                        resultSet.getInt("likes")
                 ));
             }
             statement.close();
@@ -80,7 +81,7 @@ public class DBManagerNote {
 
         try {
 
-            PreparedStatement statement = connection.prepareStatement("SELECT n.id, users.id, n.note_type, n.doctor_id, users.full_name, n.patient_name, n.content, n.visit_time " +
+            PreparedStatement statement = connection.prepareStatement("SELECT n.id, users.id, n.note_type, n.doctor_id, users.full_name, n.patient_name, n.content, n.visit_time, n.likes " +
                     "FROM doctor_notes as n " +
                     "INNER JOIN users on users.id = n.doctor_id " +
                     "WHERE n.id = ?");
@@ -96,7 +97,8 @@ public class DBManagerNote {
                         new User (resultSet.getLong("doctor_id"), null, null, resultSet.getString("full_name"),null),
                         resultSet.getString("patient_name"),
                         resultSet.getString("content"),
-                        resultSet.getTimestamp( "visit_time")
+                        resultSet.getTimestamp( "visit_time"),
+                        resultSet.getInt("likes")
 
                 );
             }
@@ -179,15 +181,75 @@ public class DBManagerNote {
 
 
         return comments;
+    }
+
+    public static void ToLike(Note note, User user) {
+
+        try {
+
+            boolean liked = false;
+
+            PreparedStatement likedOrNoStatement = connection.prepareStatement("SELECT * FROM note_likes WHERE note_id = ? AND user_id = ?");
+
+            likedOrNoStatement.setLong(1, note.getId());
+            likedOrNoStatement.setLong(2, user.getId());
+
+            ResultSet resultSet = likedOrNoStatement.executeQuery();
+            if (resultSet.next()) {
+                liked = true;
+            }
+
+            likedOrNoStatement.close();
+
+            if (liked) {
+                PreparedStatement dislikeStatement = connection.prepareStatement("" +
+                        "DELETE FROM note_likes WHERE note_id = ? AND user_id = ?");
+
+                dislikeStatement.setLong(1, note.getId());
+                dislikeStatement.setLong(2, user.getId());
+
+                dislikeStatement.executeUpdate();
+                dislikeStatement.close();
+
+            } else {
+                PreparedStatement likeStatement = connection.prepareStatement("" +
+                        "INSERT INTO note_likes (note_id, user_id) VALUES (?, ?)");
+
+                likeStatement.setLong(1, note.getId());
+                likeStatement.setLong(2, user.getId());
+
+                likeStatement.executeUpdate();
+                likeStatement.close();
+
+            }
+
+            PreparedStatement countStatement = connection.prepareStatement("" +
+                    "SELECT COUNT(*) as likesAmount FROM note_likes WHERE note_id = ?");
+            countStatement.setLong(1, note.getId());
+            ResultSet countResultSet = countStatement.executeQuery();
+
+            int likes = 0;
+
+            if(countResultSet.next()){
+                likes = countResultSet.getInt("likesAmount");
+            }
+            countStatement.close();
+
+            PreparedStatement updateStatement = connection.prepareStatement("" +
+                    "UPDATE doctor_notes SET likes = ? WHERE id = ?");
+            updateStatement.setLong(1, likes);
+            updateStatement.setLong(2, note.getId());
+
+            updateStatement.executeUpdate();
+            updateStatement.close();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }
-
-
-
-
-
-
 
 
 }

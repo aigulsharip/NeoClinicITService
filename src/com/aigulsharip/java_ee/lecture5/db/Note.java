@@ -10,6 +10,17 @@ public class Note {
     private String patientName;
     private String content;
     private Timestamp visitTime;
+    private int likes;
+
+    public Note(Long id, String noteType, User doctor, String patientName, String content, Timestamp visitTime, int likes) {
+        this.id = id;
+        this.noteType = noteType;
+        this.doctor = doctor;
+        this.patientName = patientName;
+        this.content = content;
+        this.visitTime = visitTime;
+        this.likes = likes;
+    }
 
     public Note() {
     }
@@ -21,6 +32,7 @@ public class Note {
         this.patientName = patientName;
         this.content = content;
         this.visitTime = visitTime;
+
     }
 
     public Long getId() {
@@ -69,5 +81,13 @@ public class Note {
 
     public void setVisitTime(Timestamp visitTime) {
         this.visitTime = visitTime;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 }

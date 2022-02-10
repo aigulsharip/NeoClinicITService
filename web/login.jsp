@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Login Page</title>
+    <title>Sign In</title>
     <link rel = "stylesheet" type = "text/css" href = "bootstrap/css/bootstrap.min.css">
 
 </head>
