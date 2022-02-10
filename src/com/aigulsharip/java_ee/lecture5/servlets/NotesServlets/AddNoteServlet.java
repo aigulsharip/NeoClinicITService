@@ -56,8 +56,7 @@ public class AddNoteServlet extends HttpServlet {
             } else {
                 response.sendRedirect("/notes");
             }
-        }
-        else {
+        } else {
             response.sendRedirect("/signin");
         }
     }

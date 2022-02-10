@@ -30,12 +30,25 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="/patients">Patients</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="/notes">Notes</a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="/addMedication">Add Medication</a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="/addNote">Add Note</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="/addPatient">Add Patient</a>
+                </li>
+
 
 
                 <%
@@ -58,6 +71,11 @@
                 <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="/medications">Medications</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="/patients">Patients</a>
+                </li>
+
 
                 <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="/notes">Notes</a>

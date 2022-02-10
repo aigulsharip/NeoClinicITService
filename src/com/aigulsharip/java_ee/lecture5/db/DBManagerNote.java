@@ -112,6 +112,80 @@ public class DBManagerNote {
 
     }
 
+    public static void addComment(Comment comment) {
+
+        try {
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO comments(user_id, note_id, comment, post_date) " +
+                    " VALUES (?, ?, ?, NOW())");
+
+            statement.setLong(1, comment.getAuthor().getId());
+            statement.setLong(2, comment.getNote().getId());
+            statement.setString(3, comment.getCommment());
+
+            statement.executeUpdate();
+            statement.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static ArrayList<Comment> getAllCommentsByNoteId(Long id) {
+
+        ArrayList <Comment> comments = new ArrayList<>();
+
+        try {
+
+            PreparedStatement statement = connection.prepareStatement("SELECT c.id, c.comment, c.post_date, c.user_id, c.note_id, u.full_name "+
+                    "FROM comments c " +
+                    "INNER JOIN users u ON u.id = c.user_id "  +
+                    "WHERE c.note_id = ? " +
+                    "ORDER BY c.post_date DESC ");
+
+            statement.setLong(1, id);
+
+            ResultSet resultSet = statement.executeQuery();
+
+
+            while (resultSet.next()){
+
+                comments.add(
+                        new Comment(
+                                resultSet.getLong("id"),
+                                new User(
+                                        resultSet.getLong("user_id"),
+                                        null, null,
+                                        resultSet.getString("full_name"),
+                                        UserRoles.ROLE_USER
+                                ),
+                                new Note(
+                                        resultSet.getLong("note_id"),
+                                        null, null, null, null, null
+                                ),
+                                resultSet.getString("comment"),
+                                resultSet.getTimestamp("post_date")
+                        )
+                );
+
+            }
+
+            statement.close();
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        return comments;
+
+
+    }
+
+
+
+
 
 
 
