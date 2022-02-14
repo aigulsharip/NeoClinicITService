@@ -13,7 +13,7 @@
 <head>
        <title>Note</title>
     <link rel = "stylesheet" type = "text/css" href = "bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.css">
 </head>
 <body>
 <div class = "container-fluid">
@@ -46,22 +46,17 @@
                             <%
                                 if(currentUser!=null){
                             %>
-                    <form action="/toLike" method="post">
+                    <form action="/toLike" method="post" id = "like_form_id">
                         <input type="hidden" name="note_id" value="<%=note.getId()%>">
-                        <i class="fa-solid fa-heart">Like</i>
-                        <i class="fa-solid fa-thumbs-up"></i>
-
-                        <button class="btn btn-danger btn-sm">LIKE</button>
-
+                        <a href="JavaScript:void(0)" style = "text-decoration:none;" onclick="document.getElementById('like_form_id').submit()">
+                            <i class="fas fa-heart" style="color: red"></i>
+                        </a>
                     </form>
                     <%
                         }
                     %>
                     </p>
                 </div>
-
-
-
 
                 <h3>Comments: </h3>
 
@@ -102,18 +97,8 @@
                                 }
                             %>
                         </div>
-
-
-
-
-
                     </div>
-
-
-
                 </div>
-
-
 
                 <%
 
@@ -124,8 +109,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 </body>
