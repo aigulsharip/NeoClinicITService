@@ -1,0 +1,21 @@
+
+w
+java:S1989"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(üÏÏÇ
+i
+java:S1989"SHandle the following exception that could be thrown by "sendRedirect": IOException.(áòŸ×
+i
+java:S1989!"SHandle the following exception that could be thrown by "sendRedirect": IOException.(¥îéÈ
+s
+java:S19892"XHandle the following exception that could be thrown by "valueOf": NumberFormatException.(ÿƒÚûÿÿÿÿ
+t
+java:S19893"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(Ç¢‘ªıÿÿÿÿ
+o
+java:S19894"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(è—‡ª
+n
+java:S1989D"SHandle the following exception that could be thrown by "sendRedirect": IOException.(–¡­Çüÿÿÿÿ
+i
+java:S1989F"SHandle the following exception that could be thrown by "sendRedirect": IOException.(Î€æ
+i
+java:S1989I"SHandle the following exception that could be thrown by "sendRedirect": IOException.(¥îéÈ
+k	java:S1172"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿƒÚûÿÿÿÿ
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(©å“ôıÿÿÿÿ8èÎéÉì/

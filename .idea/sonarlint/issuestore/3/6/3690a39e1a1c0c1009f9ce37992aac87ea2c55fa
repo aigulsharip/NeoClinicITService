@@ -1,0 +1,12 @@
+
+w
+java:S1989"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(ôª¥‹
+U
+java:S2441'":Make "User" serializable or don't store it in the session.(ûìØÎÿÿÿÿÿ
+n
+java:S1989,"SHandle the following exception that could be thrown by "sendRedirect": IOException.(ÅÛÀöşÿÿÿÿ
+H
+java:S1128"2Remove this unused import 'java.sql.SQLException'.(ÛïÆŸ
+F
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ø‘–

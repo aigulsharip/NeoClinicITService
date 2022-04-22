@@ -1,0 +1,14 @@
+
+Q	java:S125"<This block of commented-out lines of code should be removed.(ûÀĞ¶
+i
+java:S1128"NRemove this unused import 'com.aigulsharip.java_ee.lecture5.db.DBManagerUser'.(¤çÒüÿÿÿÿ
+Q
+java:S1128";Remove this unused import 'javax.servlet.ServletException'.(Š‰™Œ
+X
+java:S1128"BRemove this unused import 'javax.servlet.http.HttpServletRequest'.(ø©¹…
+Y
+java:S1128	"CRemove this unused import 'javax.servlet.http.HttpServletResponse'.(Á¨ïë
+K
+java:S1128
+"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ø‘–

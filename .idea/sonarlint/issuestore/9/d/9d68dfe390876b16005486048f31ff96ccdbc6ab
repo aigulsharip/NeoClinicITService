@@ -1,0 +1,11 @@
+
+
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(°€İá8œ¹º„ì/
+i
+java:S1989"SHandle the following exception that could be thrown by "sendRedirect": IOException.(¥îéÈ
+p
+java:S1128"NRemove this unused import 'com.aigulsharip.java_ee.lecture5.db.DBManagerUser'.(¤çÒüÿÿÿÿ8œ¹º„ì/
+b
+java:S1128"ERemove this unused import 'com.aigulsharip.java_ee.lecture5.db.User'.(º¿îŠ8œ¹º„ì/
+X
+java:S1128";Remove this unused import 'javax.servlet.http.HttpSession'.(í¨ô8œ¹º„ì/
